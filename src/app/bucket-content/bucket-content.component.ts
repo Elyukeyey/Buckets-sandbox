@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { StoreService } from '../store.service';
 
 @Component({
   selector: 'app-bucket-content',
@@ -6,10 +9,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bucket-content.component.css']
 })
 export class BucketContentComponent implements OnInit {
-
-  constructor() { }
+  @Input() id: number;
+  bucket$: Observable<any>
+  constructor(private store: StoreService) { }
 
   ngOnInit() {
+
   }
 
 }

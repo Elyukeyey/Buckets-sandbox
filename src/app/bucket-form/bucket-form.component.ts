@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { StoreService, ADD } from '../store.service';
+import { Bucket } from '../interfaces';
 
 @Component({
   selector: 'app-bucket-form',
@@ -15,23 +16,19 @@ export class BucketFormComponent implements OnInit {
   ngOnInit() {
   }
 
+  _genId = () => Math.random().toString(24).substr(2,6);
+
   onSubmit (e, { value }) {
     e.preventDefault();
-    const payload = {
-      id: Math.random().toString(24).substr(2,6),
+    const payload: Bucket = {
+      id: this._genId(),
       name: value,
-      location: (Math.random() > 0.5) ? 'Ljubljana' : 'Kranj'
+      location: (Math.random() > 0.5) ? 'Ljubljana' : 'Kranj',
+      content: {
+        files: [],
+        sizes: [],
+      }
     };
     this.store.dispatch({ type: ADD, payload: payload});
-  }
-  onAddBucket({ value }) {
-    const payload = {
-      id: Math.random().toString(24).substr(2,6),
-      name: value,
-      location: (Math.random() > 0.5) ? 'Ljubljana' : 'Kranj'
-    };
-    this.store.dispatch({ type: ADD, payload: payload});
-    value = '';
-    //this.addBucket.emit(payload);
   }
 }

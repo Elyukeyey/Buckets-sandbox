@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 
 import { BehaviorSubject } from 'rxjs';
+import { Bucket } from './interfaces';
 
 // consts
 export const ADD = 'ADD';
 export const DELETE = 'DELETE';
+export const ADD_CONTENT = 'ADD_CONTENT';
 
 // state
-const initState: { buckets: Object[], user: string } = {
+const initState: { user: string, buckets: Bucket[] } = {
   user: 'test',
   buckets: []
 }
@@ -16,15 +18,26 @@ const initState: { buckets: Object[], user: string } = {
   providedIn: 'root'
 })
 export class StoreService {
-  prevState: {};
-  state: { user: string, buckets: Object[] };
+  prevState: Object[];
+  state: { user: string, buckets: Bucket[] };
   state$: BehaviorSubject<any>;
 
   constructor() { 
     this.state = { ...initState }
+    this.prevState = [this.state];
     this.state$ = new BehaviorSubject<any>(this.state);
   }
 
+  _addContent = (indx, content) => {
+    const { name, size } = content,
+    arr = [...this.state.buckets];
+
+    let index = arr.map(({ id }) => id).indexOf(indx);
+    arr[index].content.files.push(content.file);
+    arr[index].content.sizes.push(content.size);
+    console.log(arr[index].content);
+    //return {...this.state, buckets: arr }
+  }
   bucketReducer = (action) => {
     const { type, payload } = action;
     switch(type) {
@@ -33,13 +46,15 @@ export class StoreService {
         let newState = [... this.state.buckets];
         newState.splice(payload, 1);
         return {...this.state, buckets: newState };
+      case ADD_CONTENT:
+        this._addContent(payload.id, payload.content);
       default:
         return this.state;
     }
   }
 
   dispatch = (action) => {
-    this.prevState = this.state;
+    this.prevState.push(this.state);
     this.state = this.bucketReducer(action);
     this.state$.next(this.state);
   }
