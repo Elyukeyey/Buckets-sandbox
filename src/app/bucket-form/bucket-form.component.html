@@ -1,0 +1,12 @@
+<div class="container-fluid">
+  <form (submit)="onSubmit($event, bucketNameInput)">
+  <div class="form-group mt-3 mb-3">
+    <label for="add-bucket"><strong>Add bucket</strong></label>
+    <input name="bucket" type="text" class="form-control" id="add-bucket" placeholder="bucket name..." #bucketNameInput>
+    <button 
+      type="submit"
+      class="btn btn-primary mt-3"
+      >Add to list</button>
+  </div>
+  </form>
+</div>

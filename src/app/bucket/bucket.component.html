@@ -1,0 +1,13 @@
+<div class="container w-90">
+	<div class="row">
+		<div class="col-sm-12"><h5>{{ bucket.name | titlecase}}</h5> <small> id: {{ bucket.id }}</small></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">Location: {{ bucket.location }}</div>
+    <div class="col-sm-4">Elements: </div>
+    <div class="col-sm-4"><button class="btn btn-danger btn-sm" (click)="deleteBucket(bucket.id)">delete</button></div>
+  </div>
+</div>
+
+<div>
+</div>
