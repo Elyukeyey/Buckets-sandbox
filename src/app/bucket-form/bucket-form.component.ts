@@ -10,6 +10,7 @@ import { Bucket } from '../interfaces';
 })
 export class BucketFormComponent implements OnInit {
   bucketNameInput: HTMLInputElement;
+  locations: string[] = ['Ljubljana','Kranj','Maribor','Koper'];
 
   constructor(private store: StoreService) { }
 
@@ -18,12 +19,12 @@ export class BucketFormComponent implements OnInit {
 
   _genId = () => Math.random().toString(24).substr(2,6);
 
-  onSubmit (e, { value }) {
+  onSubmit (e, name, location) {
     e.preventDefault();
     const payload: Bucket = {
       id: this._genId(),
-      name: value,
-      location: (Math.random() > 0.5) ? 'Ljubljana' : 'Kranj',
+      name: name.value,
+      location: location.value,
       content: {
         files: [],
         sizes: [],

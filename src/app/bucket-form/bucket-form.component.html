@@ -1,8 +1,30 @@
 <div class="container-fluid">
-  <form (submit)="onSubmit($event, bucketNameInput)">
+  <form (submit)="onSubmit($event, bucketNameInput, bucketLocationSelect)">
   <div class="form-group mt-3 mb-3">
-    <label for="add-bucket"><strong>Add bucket</strong></label>
-    <input name="bucket" type="text" class="form-control" id="add-bucket" placeholder="bucket name..." #bucketNameInput>
+    <div class="form-row">
+      <div class="form-group col-sm-6">
+            <label for="add-bucket"><strong>Add bucket</strong></label>
+            <input 
+              name="bucket" 
+              type="text" 
+              class="form-control" 
+              id="add-bucket" 
+              placeholder="bucket name..." 
+              #bucketNameInput
+              required>
+      </div>
+      <div class="form-group col-sm-6">
+        <label for="bucket-location"><strong>Location</strong></label>
+        <select 
+              name="location"
+              type="select"
+              class="form-control"
+              #bucketLocationSelect
+              required>
+          <option *ngFor="let location of locations">{{ location }}</option>
+        </select>
+      </div>
+    </div>
     <button 
       type="submit"
       class="btn btn-primary mt-3"

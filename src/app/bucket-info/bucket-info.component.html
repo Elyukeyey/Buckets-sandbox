@@ -1,8 +1,9 @@
-<div class="container-fluid" *ngIf="buckets.length > 0">
-  <div class="info">
+<div class="container-fluid">
+  <div [className]="buckets.length > 0 ? 'info full' : 'info empty'" >
   <div class="row">
     <div class="col-sm-12">
-      <span class="align-middle full-opacity">Buckets: {{buckets.length}}</span>    
+      <span *ngIf="buckets.length > 0; else Empty" class="align-middle full-opacity">Buckets: {{buckets.length}}</span>    
+      <ng-template #Empty>Bucket list Empty!</ng-template>
     </div>
   </div>
   </div>
