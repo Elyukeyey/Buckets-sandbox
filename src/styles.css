@@ -2,6 +2,9 @@
 /*
 https://coolors.co/b2aa8e-0c1b33-7a306c-03b5aa-dbfe87
 */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
 * {
   box-sizing: border-box;
 }
+
