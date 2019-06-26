@@ -43,13 +43,12 @@ export class StoreService {
   _getLocalStorage = () => JSON.parse(localStorage.getItem(BUCKET));
 
   // content:
-  _addContent = (indx, content) => {
-    const { name, size } = content,
-    arr = [...this.state.buckets];
+  _addContent = (payload) => {
+    const { bucketId, filename, filesize } = payload;
+    const arr = [...this.state.buckets];
 
-    let index = arr.map(({ id }) => id).indexOf(indx);
-    arr[index].content.files.push(content.file);
-    arr[index].content.sizes.push(content.size);
+    let index = arr.map(({ id }) => id).indexOf(bucketId);
+    arr[index].content.push({ filename, filesize });
     console.log(arr[index].content);
   }
 
@@ -64,7 +63,7 @@ export class StoreService {
         newState.splice(index, 1);
         return {...this.state, buckets: newState };
       case ADD_CONTENT:
-        this._addContent(payload.id, payload.content);
+        this._addContent(payload);
       default:
         return this.state;
     }

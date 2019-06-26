@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Content } from '../interfaces';
 
 @Component({
   selector: 'app-content-files',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./content-files.component.css']
 })
 export class ContentFilesComponent implements OnInit {
+  @Input() file: Content;
 
   constructor() { }
 

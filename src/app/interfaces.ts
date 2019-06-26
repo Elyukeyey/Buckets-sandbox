@@ -1,13 +1,13 @@
 export interface Content {
-  files: string[],
-  sizes: number[]
+  filename: string,
+  filesize: number
 }
 
 export interface Bucket {
   id: string,
   location: string,
   name: string,
-  content: Content
+  content: Content[]
 }
 
 

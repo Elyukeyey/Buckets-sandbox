@@ -25,10 +25,7 @@ export class BucketFormComponent implements OnInit {
       id: this._genId(),
       name: name.value,
       location: location.value,
-      content: {
-        files: [],
-        sizes: [],
-      }
+      content: []
     };
     this.store.dispatch({ type: ADD, payload: payload});
   }

@@ -13,6 +13,7 @@ import { StoreService } from './store.service';
 import { BucketInfoComponent } from './bucket-info/bucket-info.component';
 import { BucketContentComponent } from './bucket-content/bucket-content.component';
 import { ContentFilesComponent } from './content-files/content-files.component';
+import { FilesizePipe } from './filesize.pipe';
 
 const appRoutes: Routes = [
   { path: '', component: BucketlistComponent },
@@ -22,7 +23,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, RouterModule.forRoot(appRoutes) ],
-  declarations: [ AppComponent, HelloComponent, BucketFormComponent, BucketlistComponent, HeaderComponent, BucketComponent, BucketInfoComponent, BucketContentComponent, ContentFilesComponent ],
+  declarations: [ AppComponent, HelloComponent, BucketFormComponent, BucketlistComponent, HeaderComponent, BucketComponent, BucketInfoComponent, BucketContentComponent, ContentFilesComponent, FilesizePipe ],
   bootstrap:    [ AppComponent ],
   providers: [StoreService]
 })
