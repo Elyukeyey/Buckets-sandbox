@@ -1,7 +1,16 @@
 .w-90 {
   padding: 10px;
+}
+
+a {
   border-radius: 10px;
-  background-color: #B2AA8E !important;
+  display: block;
+  text-decoration: none;
+  color: #000;
+  background-color: #E3E0D5;
+}
+a:hover {
+  background-color: #B2AA8E;
 }
 
 h5 {

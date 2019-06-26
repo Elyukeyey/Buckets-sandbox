@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router'; 
 
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
@@ -12,8 +13,14 @@ import { StoreService } from './store.service';
 import { BucketInfoComponent } from './bucket-info/bucket-info.component';
 import { BucketContentComponent } from './bucket-content/bucket-content.component';
 
+const appRoutes: Routes = [
+  { path: '', component: BucketlistComponent },
+  { path: 'bucket/:id', component: BucketContentComponent },
+  { path: '**', component: BucketlistComponent }
+];
+
 @NgModule({
-  imports:      [ BrowserModule, FormsModule ],
+  imports:      [ BrowserModule, FormsModule, RouterModule.forRoot(appRoutes) ],
   declarations: [ AppComponent, HelloComponent, BucketFormComponent, BucketlistComponent, HeaderComponent, BucketComponent, BucketInfoComponent, BucketContentComponent ],
   bootstrap:    [ AppComponent ],
   providers: [StoreService]
