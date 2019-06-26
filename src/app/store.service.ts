@@ -59,8 +59,9 @@ export class StoreService {
     switch(type) {
       case ADD: return { ...this.state, buckets: [...this.state.buckets, payload] };
       case DELETE:
-        let newState = [... this.state.buckets];
-        newState.splice(payload, 1);
+        const index = [...this.state.buckets].map(({ id }) => id ).indexOf(payload);
+        const newState = [... this.state.buckets];
+        newState.splice(index, 1);
         return {...this.state, buckets: newState };
       case ADD_CONTENT:
         this._addContent(payload.id, payload.content);

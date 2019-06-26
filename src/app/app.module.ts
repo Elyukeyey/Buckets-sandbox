@@ -12,6 +12,7 @@ import { BucketComponent } from './bucket/bucket.component';
 import { StoreService } from './store.service';
 import { BucketInfoComponent } from './bucket-info/bucket-info.component';
 import { BucketContentComponent } from './bucket-content/bucket-content.component';
+import { ContentFilesComponent } from './content-files/content-files.component';
 
 const appRoutes: Routes = [
   { path: '', component: BucketlistComponent },
@@ -21,7 +22,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, RouterModule.forRoot(appRoutes) ],
-  declarations: [ AppComponent, HelloComponent, BucketFormComponent, BucketlistComponent, HeaderComponent, BucketComponent, BucketInfoComponent, BucketContentComponent ],
+  declarations: [ AppComponent, HelloComponent, BucketFormComponent, BucketlistComponent, HeaderComponent, BucketComponent, BucketInfoComponent, BucketContentComponent, ContentFilesComponent ],
   bootstrap:    [ AppComponent ],
   providers: [StoreService]
 })

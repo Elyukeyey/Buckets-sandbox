@@ -1,5 +1,5 @@
 <div class="container-fluid mb-2 mt-2">
-  <a href="/bucket/{{bucket.id}}"class="w-90">
+  <a [routerLink]="['/bucket',bucket.id]" class="w-90">
 	<div class="row">
 		<div class="col-sm-4"><strong class="align-middle">{{ bucket.name | titlecase}}</strong></div>
     <div class="col-sm-4"><span class="align-middle">Location: {{ bucket.location }}</span></div>

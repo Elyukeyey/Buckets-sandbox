@@ -1,8 +1,37 @@
+<div class="container-fluid mt-3">
+    <div class="form-group" *ngIf="!toggleAddFile">
+	      <form>
+          
+          <p><strong>File upload for bucket: {{ bucket$.name }}</strong></p>
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="file-upload">
+            <label for="file-upload" class="custom-file-label"></label>
+          </div>
+          <button type="submit" class="btn btn-primary mt-3 mb-3">Upload</button>
+	      </form>
+    </div>
+</div>
+
 <div class="container-fluid">
+    
 		<div class="row">
 			<div class="col-sm-12">
-        Test Bucket Content
-
+        <h4>{{ bucket$.name | titlecase}}</h4>
       </div>
 		</div>
+
+
+    <div class="row">
+	    <div class="col-sm-12">{{bucket$.location}}</div>
+    </div>
+
+    <app-content-files></app-content-files>
+
+
+    <div class="row">
+      <div class="col-sm-12">
+          <button class="btn btn-danger btn-sm" (click)="deleteBucket(id)">Delete Bucket</button>
+      </div>
+    </div>
+  
 </div>
