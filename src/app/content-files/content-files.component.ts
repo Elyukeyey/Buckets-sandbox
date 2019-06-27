@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Content } from '../interfaces';
+import { StoreService, DELETE_CONTENT } from '../store.service';
+import { Content, Bucket } from '../interfaces';
 
 @Component({
   selector: 'app-content-files',
@@ -8,10 +9,15 @@ import { Content } from '../interfaces';
 })
 export class ContentFilesComponent implements OnInit {
   @Input() file: Content;
-
-  constructor() { }
+  @Input() bucket: Bucket;
+  constructor(private store: StoreService) { 
+  }
 
   ngOnInit() {
+  }
+
+  onDeleteFile(e) {
+    this.store.dispatch({ type: DELETE_CONTENT, payload: { id: this.bucket.id, file: this.file.filename }});
   }
 
 }

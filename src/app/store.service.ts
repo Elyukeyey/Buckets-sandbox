@@ -7,6 +7,7 @@ import { Bucket } from './interfaces';
 export const ADD = 'ADD';
 export const DELETE = 'DELETE';
 export const ADD_CONTENT = 'ADD_CONTENT';
+export const DELETE_CONTENT = 'DELETE_CONTENT';
 
 export const BUCKET = 'BUCKET';
 
@@ -43,15 +44,32 @@ export class StoreService {
   _getLocalStorage = () => JSON.parse(localStorage.getItem(BUCKET));
 
   // content:
+
+  _index = (id, arr) => {
+    return arr.map(({ id }) => id).indexOf(id);
+  }
+
   _addContent = (payload) => {
     const { bucketId, filename, filesize } = payload;
     const arr = [...this.state.buckets];
 
-    let index = arr.map(({ id }) => id).indexOf(bucketId);
+    let index = this._index(bucketId, arr);
     arr[index].content.push({ filename, filesize });
-    console.log(arr[index].content);
+
+    return arr
   }
 
+  _deleteContent = (payload) => {
+    const { id, file } = payload;
+    const arr = [...this.state.buckets];
+
+    let index = this._index(id,arr);
+    const fileArr = arr[index].content.map(({ filename }) => filename);
+    let fileIndx = fileArr.indexOf(file);
+    const newState = arr[index].content.splice(fileIndx, 1);
+
+    return arr
+  }
   // reducers:
   bucketReducer = (action) => {
     const { type, payload } = action;
@@ -63,7 +81,9 @@ export class StoreService {
         newState.splice(index, 1);
         return {...this.state, buckets: newState };
       case ADD_CONTENT:
-        this._addContent(payload);
+        return { ... this.state, buckets: this._addContent(payload) };
+      case DELETE_CONTENT:
+        return { ... this.state, buckets: this._deleteContent(payload) };
       default:
         return this.state;
     }
@@ -74,5 +94,6 @@ export class StoreService {
     this.state = this.bucketReducer(action);
     this.state$.next(this.state);
     this._setLocalStorage();
+    localStorage.setItem('STATE_HISTORY',JSON.stringify(this.prevState));
   }
 }

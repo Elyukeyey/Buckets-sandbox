@@ -1,3 +1,4 @@
+<!-- make separate component !!! -->
 <div class="container-fluid mt-3">
     <div class="form-group" *ngIf="!toggleAddFile">
 	      <form (submit)="onSubmit($event)">
@@ -25,7 +26,7 @@
 	    <div class="col-sm-12">{{bucket$.location}}</div>
     </div>
 
-    <app-content-files *ngFor="let file of bucket$.content" [file]="file"></app-content-files>
+    <app-content-files *ngFor="let file of bucket$.content" [file]="file" [bucket]="bucket$"></app-content-files>
 
 
     <div class="row">
