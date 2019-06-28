@@ -1,0 +1,13 @@
+<div class="container-fluid mt-3">
+    <div class="form-group" *ngIf="!toggleAddFile">
+	      <form (submit)="onSubmit($event)">
+          
+          <p><strong>File upload for bucket: {{ name }}</strong></p>
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="file-upload" (change)="parseChanges($event, fileLabel)">
+            <label for="file-upload" class="custom-file-label" #fileLabel></label>
+          </div>
+          <button type="submit" class="btn btn-primary mt-3 mb-3">Upload</button>
+	      </form>
+    </div>
+</div>

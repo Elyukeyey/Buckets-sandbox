@@ -1,0 +1,9 @@
+<div class="container-fluid file">
+	<div class="row">
+		<div class="col-sm-5"><span class="align-middle">{{ file.filename }}</span></div>
+    <div class="col-sm-3"><span class="align-middle">{{ file.filesize | filesize }}</span></div>
+    <div class="col-sm-4"><button class="btn btn-danger btn-sm" (click)="onDeleteFile($event)">Delete file</button></div>
+	</div>
+</div>
+
+<app-modal-window *ngIf="modal" (close)="toggleModal()" [action]="action"></app-modal-window>

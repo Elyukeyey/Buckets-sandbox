@@ -1,14 +1,10 @@
 <div class="container-fluid mb-2 mt-2">
-  <div class="w-90">
+  <a [routerLink]="['/bucket',bucket.id]" class="w-90">
 	<div class="row">
 		<div class="col-sm-3"><strong class="align-middle">{{ bucket.name | titlecase}}</strong></div>
     <div class="col-sm-3"><span class="align-middle">Location: {{ bucket.location }}</span></div>
-    <div class="col-sm-3"><span class="align-middle"><small>id: {{ bucket.id}}</small></span></div>
-    <div class="col-sm-3 text-right"><button class="btn btn-danger btn-sm" (click)="deleteBucket(bucket.id)">delete</button></div>
+    <div class="col-sm-3"><span class="align-middle"><small>Files: {{ files }}</small></span></div>
+    <div class="col-sm-3"><span class="align-middle"><small>Size: {{ size | filesize }}</small></span></div>
   </div>
-  <button class="btn btn-primary" (click)="addcontent(bucket.id)">add content</button>
-</div>
-
-<div>
-  </div>
+</a>
 </div>

@@ -1,8 +1,40 @@
+<!-- make separate component !!! -->
+<!--<div class="container-fluid mt-3">
+    <div class="form-group" *ngIf="!toggleAddFile">
+	      <form (submit)="onSubmit($event)">
+          
+          <p><strong>File upload for bucket: {{ bucket$.name }}</strong></p>
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="file-upload" (change)="parseChanges($event, fileLabel)">
+            <label for="file-upload" class="custom-file-label" #fileLabel></label>
+          </div>
+          <button type="submit" class="btn btn-primary mt-3 mb-3">Upload</button>
+	      </form>
+    </div>
+</div>-->
+<app-content-upload [id]="id" [name]="bucket$.name"></app-content-upload>
+<!-- bucket-content component -->
 <div class="container-fluid">
+    
 		<div class="row">
 			<div class="col-sm-12">
-        Test Bucket Content
-
+        <h4>{{ bucket$.name | titlecase}}</h4>
       </div>
 		</div>
+
+
+    <div class="row">
+	    <div class="col-sm-12">{{bucket$.location}}</div>
+    </div>
+
+    <app-content-files *ngFor="let file of bucket$.content" [file]="file" [bucket]="bucket$"></app-content-files>
+
+
+    <div class="row">
+      <div class="col-sm-12">
+          <button class="btn btn-danger btn-sm" (click)="deleteBucket(id)">Delete Bucket</button>
+      </div>
+    </div>
+  
 </div>
+<app-modal-window *ngIf="modal" (close)="toggleModal()" [action]="action"></app-modal-window>

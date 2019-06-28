@@ -1,17 +1,22 @@
 export interface Content {
-  files: string[],
-  sizes: number[]
+  filename: string,
+  filesize: number
 }
 
 export interface Bucket {
   id: string,
   location: string,
   name: string,
-  content: Content
+  content: Content[]
 }
 
 
 export interface State {
   user: string,
   buckets: Bucket[]
+}
+
+export interface Action {
+  type: string,
+  payload: any
 }
