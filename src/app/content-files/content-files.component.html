@@ -5,3 +5,5 @@
     <div class="col-sm-4"><button class="btn btn-danger btn-sm" (click)="onDeleteFile($event)">Delete file</button></div>
 	</div>
 </div>
+
+<app-modal-window *ngIf="modal" (close)="toggleModal()" [action]="action"></app-modal-window>

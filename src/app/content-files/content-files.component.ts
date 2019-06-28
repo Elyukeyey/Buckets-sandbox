@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { StoreService, DELETE_CONTENT } from '../store.service';
-import { Content, Bucket } from '../interfaces';
+import { Content, Bucket, Action } from '../interfaces';
 
 @Component({
   selector: 'app-content-files',
@@ -10,6 +10,9 @@ import { Content, Bucket } from '../interfaces';
 export class ContentFilesComponent implements OnInit {
   @Input() file: Content;
   @Input() bucket: Bucket;
+  action: Action;
+  modal = false;
+
   constructor(private store: StoreService) { 
   }
 
@@ -17,7 +20,13 @@ export class ContentFilesComponent implements OnInit {
   }
 
   onDeleteFile(e) {
-    this.store.dispatch({ type: DELETE_CONTENT, payload: { id: this.bucket.id, file: this.file.filename }});
+    this.action = { type: DELETE_CONTENT, payload: { id: this.bucket.id, file: this.file.filename }};
+    this.toggleModal();
+    //this.store.dispatch({ type: DELETE_CONTENT, payload: { id: this.bucket.id, file: this.file.filename }});
+  }
+
+  toggleModal() {
+    this.modal = !this.modal;
   }
 
 }

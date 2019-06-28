@@ -10,24 +10,23 @@ import { Bucket } from '../interfaces';
   styleUrls: ['./bucket.component.css']
 })
 export class BucketComponent implements OnInit {
-  @Input() bucket: {id: string, name: string, location: string };
+  @Input() bucket: Bucket;
   buckets$: Observable<Bucket[]>
+  size: number;
+  files: number;
   
   constructor(private store: StoreService) { }
 
   ngOnInit() {
     this.store.state$.subscribe(({ buckets })=> this.buckets$ = buckets);
+    this.files = this.bucket.content.length;
+    this.size = this.bucket.content.map(({ filesize }) => filesize).reduce(( acc = 0, filesize ) => {
+        return acc + filesize
+      }, 0);
   }
 
   deleteBucket(id) {
     let index = [...this.buckets$].map(({ id }) => id ).indexOf(id);
     this.store.dispatch({type: DELETE, payload: index});
-  }
-  addcontent(id) {
-    const content = {
-      file: `test file ${Math.floor(Math.random()*100)}`,
-      size: Math.floor(Math.random()*(1024^3))
-    }
-    this.store.dispatch({type: ADD_CONTENT, payload: { id, content }});
   }
 }

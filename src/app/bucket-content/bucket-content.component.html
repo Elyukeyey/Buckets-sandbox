@@ -1,5 +1,5 @@
 <!-- make separate component !!! -->
-<div class="container-fluid mt-3">
+<!--<div class="container-fluid mt-3">
     <div class="form-group" *ngIf="!toggleAddFile">
 	      <form (submit)="onSubmit($event)">
           
@@ -11,8 +11,9 @@
           <button type="submit" class="btn btn-primary mt-3 mb-3">Upload</button>
 	      </form>
     </div>
-</div>
-
+</div>-->
+<app-content-upload [id]="id" [name]="bucket$.name"></app-content-upload>
+<!-- bucket-content component -->
 <div class="container-fluid">
     
 		<div class="row">
@@ -36,3 +37,4 @@
     </div>
   
 </div>
+<app-modal-window *ngIf="modal" (close)="toggleModal()" [action]="action"></app-modal-window>

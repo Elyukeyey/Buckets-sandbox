@@ -15,3 +15,8 @@ export interface State {
   user: string,
   buckets: Bucket[]
 }
+
+export interface Action {
+  type: string,
+  payload: any
+}

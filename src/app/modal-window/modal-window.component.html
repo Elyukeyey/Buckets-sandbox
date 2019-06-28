@@ -1,0 +1,11 @@
+<div class="modal-background center"></div>
+<div class="modal-content center container">
+  <div class="row">
+	<div class="col-sm-12 text-center mb-5">
+  <fa-icon [icon]="['fas','exclamation-triangle']" size="3x"></fa-icon> 
+  <h3 class="mt-3">Confirm delete?</h3>
+  </div>
+  <div class="col-sm-6 text-right"><button class="btn btn-sm btn-danger" (click)="confirm()"><fa-icon [icon]="['fas','trash']"></fa-icon> DELETE</button></div>
+  <div class="col-sm-6 text-left"><button class="btn btn-sm btn-success" (click)="toggleModal()"><fa-icon [icon]="['fas','times-circle']"></fa-icon> CANCEL</button></div>
+</div>
+</div>
