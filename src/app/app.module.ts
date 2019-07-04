@@ -20,6 +20,7 @@ import { ContentFilesComponent } from './content-files/content-files.component';
 import { FilesizePipe } from './filesize.pipe';
 import { ModalWindowComponent } from './modal-window/modal-window.component';
 import { ContentUploadComponent } from './content-upload/content-upload.component';
+import { BorderControlComponent } from './border-control/border-control.component';
 
 const appRoutes: Routes = [
   { path: '', component: BucketlistComponent },
@@ -29,7 +30,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   imports:      [ RouterModule.forRoot(appRoutes), BrowserModule, FormsModule, FontAwesomeModule,  ],
-  declarations: [ AppComponent, HelloComponent, BucketFormComponent, BucketlistComponent, HeaderComponent, BucketComponent, BucketInfoComponent, BucketContentComponent, ContentFilesComponent, FilesizePipe, ModalWindowComponent, ContentUploadComponent ],
+  declarations: [ AppComponent, HelloComponent, BucketFormComponent, BucketlistComponent, HeaderComponent, BucketComponent, BucketInfoComponent, BucketContentComponent, ContentFilesComponent, FilesizePipe, ModalWindowComponent, ContentUploadComponent, BorderControlComponent ],
   bootstrap:    [ AppComponent ],
   providers: [StoreService]
 })

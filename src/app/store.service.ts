@@ -8,6 +8,7 @@ export const ADD = 'ADD';
 export const DELETE = 'DELETE';
 export const ADD_CONTENT = 'ADD_CONTENT';
 export const DELETE_CONTENT = 'DELETE_CONTENT';
+export const LOGIN = 'LOGIN';
 
 export const BUCKET = 'BUCKET';
 
@@ -71,6 +72,7 @@ export class StoreService {
     return arr
   }
   // reducers:
+
   bucketReducer = (action) => {
     const { type, payload } = action;
     switch(type) {
@@ -84,6 +86,10 @@ export class StoreService {
         return { ... this.state, buckets: this._addContent(payload) };
       case DELETE_CONTENT:
         return { ... this.state, buckets: this._deleteContent(payload) };
+      case LOGIN: 
+        return {
+        ...this.state, user: payload
+      };
       default:
         return this.state;
     }
